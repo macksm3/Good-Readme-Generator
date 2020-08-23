@@ -39,8 +39,8 @@ function promptUser() {
       choices: [
         'MIT',
         'Apache',
-        'GPL',
-        'Public Domain',
+        'GPLv3',
+        'PDDL',
       ],
     },
     {
@@ -61,12 +61,12 @@ function writeToFile(fileName, data) {
   return generateMarkdown(fileName);
 }
 
-function generateFile(answers) {
-  return `
-  App name is ${answers.title}
-  and it ${answers.description}
-  `;
-}
+// function generateFile(answers) {
+//   return `
+//   App name is ${answers.title}
+//   and it ${answers.description}
+//   `;
+// }
 
 // function to initialize program
 async function init() {
@@ -76,9 +76,10 @@ async function init() {
     console.log(answers);
 
     const fileContent = writeToFile(answers);
+    console.log('generating content');
     console.log(fileContent);
 
-    await writeFileAsync("readthis.md", fileContent);
+    await writeFileAsync("readme.md", fileContent);
 
     // console.log("Successfully wrote to index.html");
   } catch(err) {
